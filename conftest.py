@@ -1,10 +1,21 @@
 import pytest
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
+from pathlib import Path
+from datetime import datetime
+
+home = Path(__file__).resolve().parent
+reports_folder = home.joinpath('reports')
+
+time_now = datetime.now().strftime("%d-%m-%Y_%H-%M-%S")
+
+@pytest.hookimpl(tryfirst=True)
+def pytest_configure(config):
+    # define the location and file name for the plugin pytest-html to save the html report
+    # reports folder has been defined at the beginning of the file
+    config.option.htmlpath = reports_folder / "report.html"
 
 
-
-@pytest.fixture(scope="class")
+@pytest.fixture(scope="function")
 def browser(request):
     options = webdriver.ChromeOptions()
     options.add_argument('--headless')
