@@ -6,6 +6,8 @@ name: 'Automated tests'
 on: # when the tests are run
   push:
     branches: [ master ]
+  schedule:
+  - cron: "0 7 * * *"
 #  schedule: # automatically run on a schedule everyday
 #    - cron: "0 0 * * *" # everyday at mid night
 
