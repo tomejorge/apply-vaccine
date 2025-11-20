@@ -25,8 +25,8 @@ class TestApply(BaseActions):
         return self.click(self.next_button)
 
     @pytest.mark.parametrize("name, age, phone_number", 
-    [('Tomé Jorge', '38', '91862225'),
-     ('Svenia Nowak', '31', '50341365')], ids=['tome', 'svenia'])
+    [('Tomé Jorge', '38', '23213123'),
+     ('Svenia Nowak', '31', '123123432')], ids=['tome', 'svenia'])
     def test_auto_apply_vaccine(self, name, age, phone_number):
         action = ActionChains(self.driver)
         self.visit(self.url)
